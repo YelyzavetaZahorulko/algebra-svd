@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 from scipy.sparse.linalg import svds
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 
 # Зчитування CSV file
 file_path = 'ratings.csv'
@@ -19,7 +18,6 @@ ratings_matrix = ratings_matrix.dropna(thresh=200, axis=0)
 
 # Прибираємо фільми з малою к-стю оцінок
 ratings_matrix = ratings_matrix.dropna(thresh=100, axis=1)
-
 print("Розміри матриці з корегованими даними:", ratings_matrix.shape)
 
 
@@ -34,7 +32,6 @@ user_ratings_mean = np.mean(R, axis=1)
 
 # Прибираємо судження
 R_demeaned = R - user_ratings_mean.reshape(-1, 1)
-
 print("Розмір NumPY масиву:", R.shape)
 
 # SVD
@@ -51,6 +48,3 @@ ax.scatter(U_20[:, 0], U_20[:, 1], U_20[:, 2], c='r', marker='o')
 ax.set_title('User Feature Space')
 
 plt.show()
-
-
-
